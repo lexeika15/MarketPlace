@@ -1,10 +1,23 @@
+import { useDispatch } from 'react-redux';
 import styles from './ProductCard.module.css';
+import { addToCart } from '../../../../store/cartSlice';
 
 function ProductCard({ product, category, onClick }) {
   const hasDiscount = product.oldPrice && product.oldPrice > product.price;
   const discountPercent = hasDiscount
     ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
     : null;  
+
+  const dispatch = useDispatch();
+  const selectedSize = product.sizes[0];
+
+  const handleAdd = (e) => {
+    e.stopPropagation();
+    dispatch(addToCart({
+      ...product,
+      selectedSize
+    }));
+  };
 
   return (
     <div className={styles.productCard} onClick={onClick}>
@@ -54,6 +67,7 @@ function ProductCard({ product, category, onClick }) {
 
       <button 
         className={styles.button}
+        onClick={handleAdd}
       >
         Добавить в корзину
       </button>

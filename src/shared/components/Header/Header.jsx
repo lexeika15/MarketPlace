@@ -1,21 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import styles from './Header.module.css';
 import searchIcon from './assets/search-icon.png';
 import cartIcon from './assets/cart-icon.png';
 import headerAvatar from './assets/header-avatar.png';
 
-function Header({ onSearch, searchQuery }) {
+function Header({ onSearch }) {
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setInputValue(searchQuery || '');
-  }, [searchQuery]);
 
   const handleSearchClick = () => {
     onSearch(inputValue.trim());
   }
+
+  const items = useSelector(state => state.cart.items);
 
   return (
     <header className={styles.header}>
@@ -48,7 +47,7 @@ function Header({ onSearch, searchQuery }) {
           onClick={() => navigate(`/cart`)}
         >
           <img src={cartIcon} alt="Корзина" />
-          <span className={styles.badge}></span>  
+          <span className={styles.badge}>{items.length}</span>  
         </div>
         <img src={headerAvatar} alt="Профиль" className={styles.headerAvatar} />
       </div>

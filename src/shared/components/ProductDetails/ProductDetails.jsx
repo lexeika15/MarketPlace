@@ -1,11 +1,21 @@
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProductDetails.module.css';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../store/cartSlice';
 
 function ProductDetails({ product, category }) {
   const [mainImage, setMainImage] = useState(product.image);
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const trackRef = useRef(null);
+  const dispatch = useDispatch();
+
+  const handleAdd = () => {
+    dispatch(addToCart({
+      ...product,
+      selectedSize
+    }));
+  };
 
   const thumbnails = Array(5).fill(product.image);
 
@@ -102,6 +112,7 @@ function ProductDetails({ product, category }) {
           <button 
             type="button" 
             className={styles.addToCart}
+            onClick = {handleAdd}
           >
             В корзину за  <></>
             {product.price.toLocaleString('ru-RU', {
