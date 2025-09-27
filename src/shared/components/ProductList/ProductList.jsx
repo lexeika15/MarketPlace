@@ -5,7 +5,7 @@ import ProductCard from './ProductCard/ProductCard';
 import categoriesData from '../../../api/categories.json';
 import productsData from '../../../api/products.json';
 
-function ProductList () {
+function ProductList ({ searchQuery }) {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [selectedCategoryIds, setSelectedCategoryIds] = useState([]);
@@ -20,6 +20,8 @@ function ProductList () {
   const filteredProducts = products
     .filter(product => 
       selectedCategoryIds.length === 0 || selectedCategoryIds.includes(product.categoryId)
+    )
+    .filter(product => searchQuery === '' || product.name.toLowerCase().includes(searchQuery.toLowerCase())
     )
     .sort((a, b) => 
       selectedCategoryIds.length > 0

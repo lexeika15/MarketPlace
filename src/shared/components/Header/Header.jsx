@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import searchIcon from './assets/search-icon.png';
 import cartIcon from './assets/cart-icon.png';
 import headerAvatar from './assets/header-avatar.png';
 
-function Header({ onSearch }) {
+function Header({ onSearch, searchQuery }) {
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setInputValue(searchQuery || '');
+  }, [searchQuery]);
 
   const handleSearchClick = () => {
     onSearch(inputValue.trim());
