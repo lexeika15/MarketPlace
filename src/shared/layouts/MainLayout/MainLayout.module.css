@@ -1,0 +1,24 @@
+.layoutRoot{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.contentWrapper {
+    display: flex;
+    flex: 1;
+}
+
+.leftColumn {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    padding-bottom: 10rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 320px) and (max-width: 1024px) {
+    .leftColumn {
+        width: 100%;
+    }
+}
