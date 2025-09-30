@@ -1,23 +1,18 @@
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useState} from 'react';
 import styles from  './ProductList.module.css';
 import ProductCard from './ProductCard/ProductCard';
 import categoriesData from '../../../api/categories.json';
 import productsData from '../../../api/products.json';
 
-function ProductList ({ searchQuery }) {
-  const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
+function ProductList () {
   const [selectedCategoryIds, setSelectedCategoryIds] = useState([]);
-
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setCategories(categoriesData);
-    setProducts(productsData);
-  }, [])
+  const searchQuery = searchParams.get('search') || ''; 
 
-  const filteredProducts = products
+  const filteredProducts = productsData
     .filter(product => 
       selectedCategoryIds.length === 0 || selectedCategoryIds.includes(product.categoryId)
     )
@@ -57,7 +52,7 @@ function ProductList ({ searchQuery }) {
           >
             Все товары
           </button>
-          {categories.map(category => {
+          {categoriesData.map(category => {
             const isActive = selectedCategoryIds.includes(category.id);
             return (
               <button
@@ -80,7 +75,7 @@ function ProductList ({ searchQuery }) {
       {filteredProducts.length > 0 ? (
         <main className={styles.productList}>
           {filteredProducts.map(product => { 
-            const category = categories.find(cat => cat.id === product.categoryId);
+            const category = categoriesData.find(cat => cat.id === product.categoryId);
             return (
               <ProductCard  
                 key = {product.id}

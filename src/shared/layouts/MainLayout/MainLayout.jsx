@@ -3,12 +3,12 @@ import Header from '../../components/Header/Header';
 import RightSidebar from '../../components/RightSidebar/RightSidebar';
 import Footer from '../../components/Footer/Footer';
 
-function MainLayout({ headerProps, children }) {
+function MainLayout({ children }) {
   return (
     <div className={styles.layoutRoot}>
       <div className={styles.contentWrapper}>
         <div className={styles.leftColumn}>
-          <Header {...headerProps} />
+          <Header />
           {children}
         </div>
         <RightSidebar />

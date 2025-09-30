@@ -1,16 +1,14 @@
 import MainLayout from '../../shared/layouts/MainLayout/MainLayout';
 import CartContent from '../../shared/components/CartContent/CartContent';
-import { useProductSearch } from '../../shared/hooks/useProductSearch';
 
-function Cart() {
-  const { handleSearch } = useProductSearch();
+function CartPage() {
 
   return (
-    <MainLayout headerProps = {{ onSearch: handleSearch }}>
+    <MainLayout>
       <CartContent />
     </MainLayout>
   );
 }
 
-export default Cart;
+export default CartPage;
 

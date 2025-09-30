@@ -4,14 +4,11 @@ import MainLayout from '../../shared/layouts/MainLayout/MainLayout';
 import ProductDetails from '../../shared/components/ProductDetails/ProductDetails';
 import productsData from '../../api/products.json';
 import categoriesData from '../../api/categories.json';
-import { useProductSearch } from '../../shared/hooks/useProductSearch';
 
 function ProductPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [category, setCategory] = useState(null);
-
-  const { handleSearch } = useProductSearch();
 
   useEffect(() => {
     const foundProduct = productsData.find(p => String(p.id) === id);
@@ -24,7 +21,7 @@ function ProductPage() {
   }, [id])
 
   return (
-    <MainLayout headerProps={{ onSearch: handleSearch }}>
+    <MainLayout>
       {product ? (
         <ProductDetails product={product} category={category} />
       ) : (

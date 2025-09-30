@@ -6,15 +6,18 @@ import searchIcon from './assets/search-icon.png';
 import cartIcon from './assets/cart-icon.png';
 import headerAvatar from './assets/header-avatar.png';
 
-function Header({ onSearch }) {
+function Header() {
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
-
-  const handleSearchClick = () => {
-    onSearch(inputValue.trim());
-  }
-
   const items = useSelector(state => state.cart.items);
+
+  const handleSearch = (inputValue) => {
+    const trimmed = inputValue.trim();
+    if(trimmed)
+      navigate(`/products?search=${encodeURIComponent(trimmed)}`);
+    else
+      navigate(`/products`);
+  };
 
   return (
     <header className={styles.header}>
@@ -34,7 +37,7 @@ function Header({ onSearch }) {
           />
           <div
             className={styles.iconWrapper}
-            onClick={handleSearchClick}
+            onClick={() => handleSearch(inputValue)}
           >
             <img src={searchIcon} alt="Search Icon" />
           </div>
