@@ -1,0 +1,139 @@
+.wrapper {
+    width: 100%;
+    padding: 1.6rem 5rem;
+    box-sizing: border-box;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    box-sizing: border-box;
+}
+
+.filter h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 0;
+    color: #2d2d2f;
+    line-height: 100%;
+    letter-spacing: 0;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.button {
+    border-radius: 4rem;
+    border: 0.1rem solid;
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+    height: 100%;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+.filterHeader {
+    display: flex;
+    align-items: center;
+    gap: 13rem;
+}
+
+.settings {
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 0;
+    line-height: 100%;
+    color: #2967ff;
+    text-decoration: none;
+}
+
+.settings:hover {
+    color: #0056b3;
+}
+
+.productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.emptyState {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38rem;
+    font-weight: 700;
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .wrapper {
+        padding: 1.6rem 2rem;
+    }
+
+    .filter h2 {
+        font-size: 1.8rem;
+    }
+
+    .filterHeader {
+        gap: 6rem;
+    }
+
+    .productList {
+        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+        gap: 1.6rem;
+    }
+
+    .emptyState {
+        font-size: 2.4rem;
+        min-height: 30rem;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .wrapper {
+        padding: 1rem 1.2rem;
+    }
+
+    .filter h2 {
+        font-size: 1.6rem;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+        gap: 0.6rem;
+    }
+
+    .button {
+        font-size: 1.1rem;
+    }
+
+    .filterHeader {
+        gap: 2rem;
+    }
+
+    .settings {
+        font-size: 1.1rem;
+    }
+
+    .productList {
+        grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+        gap: 1rem;
+    }
+
+    .emptyState {
+        font-size: 2rem;
+        min-height: 24rem;
+    }
+}
