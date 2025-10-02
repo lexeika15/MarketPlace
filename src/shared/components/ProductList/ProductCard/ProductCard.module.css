@@ -1,0 +1,173 @@
+.productCard {
+    background-color: #fff;
+    border: 0.2rem solid transparent;
+    border-radius: 8px;
+    transition: border-color 0.2s ease, transform 0.15s ease;
+    cursor: pointer;
+    padding: 0.8rem;
+    box-sizing: border-box;
+}
+
+.productCard:hover {
+    border-color: #ccc;
+    transform: translateY(-0.2rem);
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.categoryBadge {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.4rem 1.4rem;
+    border-radius: 4rem;
+    border: 0.1rem solid;
+    font-weight: 600;
+    font-size: 1.4rem;
+    background-color: #fff;
+    white-space: nowrap;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 140%;
+    letter-spacing: 0;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.priceBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.price {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #2967ff;
+}
+
+.oldPriceRow {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+}
+
+.oldPrice {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #8d8d8e;
+    text-decoration: line-through;
+}
+
+.discount {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: #ff2d87;
+}
+
+.oldPriceRowPlaceholder {
+    height: 1.4rem;
+}
+
+.button {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1rem 2rem;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-align: center;
+    background-color: #fff;
+    border: 0.2rem solid #2967ff;
+    border-radius: 5rem;
+    cursor: pointer;
+    color: #2967ff;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+    background-color: #2967ff;
+    color: #fff;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .productCard {
+        padding: 0.6rem;
+    }
+
+    .categoryBadge {
+        font-size: 1.2rem;
+        padding: 0.3rem 1rem;
+    }
+
+    .title,
+    .oldPrice,
+    .discount {
+        font-size: 1.2rem;
+    }
+
+    .price {
+        font-size: 1.8rem;
+    }
+
+    .button {
+        font-size: 1.3rem;
+        padding: 0.8rem 1.6rem;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .productCard {
+        padding: 0.5rem;
+    }
+
+    .categoryBadge {
+        font-size: 1rem;
+        padding: 0.2rem 0.8rem;
+    }
+
+    .title {
+        margin: 0.4rem 0 0.8rem 0;
+    }
+
+    .price {
+        font-size: 1.6rem;
+    }
+
+    .oldPriceRow {
+        gap: 1rem;
+    }
+
+    .oldPrice,
+    .discount,
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .button {
+        font-size: 1.2rem;
+        padding: 0.6rem 1.2rem;
+        margin-top: 0.8rem;
+    }
+}
